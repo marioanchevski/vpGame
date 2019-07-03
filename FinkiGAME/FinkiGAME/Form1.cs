@@ -7,7 +7,7 @@ namespace FinkiGAME
 {
     public partial class Form1 : Form
     {
-        int n;
+        int numberOfItems;
         bool flag;
         public Items Scene { get; set; }
         public Box MyBox { get; set; }
@@ -30,7 +30,7 @@ namespace FinkiGAME
             flag = true;
             Scene = new Items();
             DoubleBuffered = true;
-            n = 1;
+            numberOfItems = 1;
             MyBox = new Box();
             timer1.Start();
         }
@@ -42,10 +42,10 @@ namespace FinkiGAME
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            if (n % 10 == 0)
+            if (numberOfItems % 10 == 0)
                 Scene.AddItem();
             Scene.Move();
-            n++;
+            numberOfItems++;
             Scene.IsHit(MyBox);
             textBox1.Text = Items.points.ToString();
             textBox2.Text = Scene.Misses.ToString();

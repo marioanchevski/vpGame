@@ -6,7 +6,7 @@ namespace FinkiGAME
     {
         public Point Location { get; set; }
         public int Delete { get; set; }
-        public static int SPEED = 10;
+        public static int SPEED = 23;
 
         public Beer(Point p)
         {
@@ -29,7 +29,7 @@ namespace FinkiGAME
 
         public bool IsHit(Box b)
         {
-            return Location.X >= b.Location.X && Location.X <= b.Location.X + 122 && Location.Y >= b.Location.Y && Location.Y <= b.Location.Y + 100;
+            return Location.X >= b.Location.X - 10 && Location.X <= b.Location.X + 122 && Location.Y >= b.Location.Y - 40 && Location.Y <= b.Location.Y + 30;
         }
         public bool IsFallen()
         {

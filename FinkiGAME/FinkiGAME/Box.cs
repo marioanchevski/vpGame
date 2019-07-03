@@ -14,14 +14,14 @@ namespace FinkiGAME
         public void Draw(Graphics g)
         {
             Brush b = new SolidBrush(Color.Transparent);
-            g.FillRectangle(b, Location.X, Location.Y, 122, 70);
+            g.FillRectangle(b, Location.X, Location.Y, 125, 90);
             b.Dispose();
         }
 
         public void Move(int x)
         {
-            //Left separator >= 100 right <=580
-            if (x >= 110 && x <= 580)
+            //Left separator >= 110 right <=580
+            if (x >= 108 && x <= 580)
             {
                 Location = new Point(x, Location.Y);
             }
