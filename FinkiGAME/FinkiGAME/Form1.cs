@@ -1,12 +1,6 @@
 ﻿using FinkiGAME.Properties;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinkiGAME
@@ -14,22 +8,30 @@ namespace FinkiGAME
     public partial class Form1 : Form
     {
         int n;
-        int pom;
-        public Items scene { get; set; }
-        public Box myBox { get; set; }
+        bool flag;
+        public Items Scene { get; set; }
+        public Box MyBox { get; set; }
         Image BeerBox;
         Image beer;
 
         public Form1()
         {
             InitializeComponent();
-            scene = new Items();
-            DoubleBuffered = true;
-            n = 1;
-            myBox = new Box();
+            NewGame();
             beer = Resources.ZMA13254;
             BeerBox = Resources.sk;
+            label1.BackColor = System.Drawing.Color.Transparent;
+            label2.BackColor = System.Drawing.Color.Transparent;
 
+        }
+        public void NewGame()
+        {
+            flag = true;
+            Scene = new Items();
+            DoubleBuffered = true;
+            n = 1;
+            MyBox = new Box();
+            timer1.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -40,38 +42,62 @@ namespace FinkiGAME
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (n % 10 == 0)
-                scene.addItem();
-            scene.move();
+                Scene.addItem();
+            Scene.move();
             n++;
-            scene.isHit(myBox);
-            textBox1.Text = scene.points.ToString();
-            textBox2.Text = scene.misses.ToString();
-            if (scene.misses == 3)
+            Scene.isHit(MyBox);
+            textBox1.Text = Scene.points.ToString();
+            textBox2.Text = Scene.misses.ToString();
+            if (Scene.misses == 3)
                 timer1.Stop();
-                Invalidate();
+            Invalidate();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.Clear(Color.White);
-            scene.draw(e.Graphics);
-            myBox.draw(e.Graphics);
-           
-            for(int i=0;i<scene.items.Count;i++) {
-                e.Graphics.DrawImageUnscaled(beer, scene.items[i].Location);
+            Scene.draw(e.Graphics);
+            MyBox.draw(e.Graphics);
+
+            for (int i = 0; i < Scene.items.Count; i++)
+            {
+                e.Graphics.DrawImageUnscaled(beer, Scene.items[i].Location);
             }
-            e.Graphics.DrawImageUnscaled(BeerBox, myBox.Location);
+            e.Graphics.DrawImageUnscaled(BeerBox, MyBox.Location);
 
             Brush b = new SolidBrush(Color.Red);
-            if (scene.misses == 3) {
-                e.Graphics.DrawString("GAME OVER!", new Font("Arial", 18,FontStyle.Bold), b, 300, 222);
+            if (Scene.misses == 3)
+            {
+                //e.Graphics.DrawString("GAME OVER!", new Font("Arial", 18, FontStyle.Bold), b, 300, 222);
+                if (flag)
+                {
+                    flag = false;
+                    NewGameForm();
+                }
             }
 
+        }
+        public void NewGameForm()
+        {
+            Form2 obj = new Form2();
+            if (obj.ShowDialog() == DialogResult.Yes)
+            {
+                NewGame();
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
-            myBox.move(e.X);
+            MyBox.move(e.X);
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
