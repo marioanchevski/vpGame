@@ -46,7 +46,7 @@ namespace FinkiGAME
             Scene.move();
             n++;
             Scene.isHit(MyBox);
-            textBox1.Text = Scene.points.ToString();
+            textBox1.Text = Items.points.ToString();
             textBox2.Text = Scene.misses.ToString();
             if (Scene.misses == 3)
                 timer1.Stop();

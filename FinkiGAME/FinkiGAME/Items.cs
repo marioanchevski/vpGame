@@ -10,7 +10,7 @@ namespace FinkiGAME
     public class Items
     {
         public List<Beer> items { get; set; }
-        public int points;
+        public static int points;
         public int Speed  { get; set; }
         public int misses { get; set; }
 

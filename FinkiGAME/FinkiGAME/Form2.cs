@@ -27,5 +27,10 @@ namespace FinkiGAME
         {
             DialogResult = DialogResult.No;
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
