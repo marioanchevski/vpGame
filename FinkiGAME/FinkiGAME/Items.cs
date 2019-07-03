@@ -48,23 +48,22 @@ namespace FinkiGAME
             {
                 if (i.IsHit(b))
                 {
-                    i.delete = 1;
+                    i.Delete = 1;
                     points++;
-
                 }
             }
             foreach (var i in items)
             {
                 if (i.IsFallen())
                 {
-                    i.delete = 2;
+                    i.Delete = 2;
                     Misses++;
                 }
             }
 
             for (int i = items.Count - 1; i >= 0; i--)
             {
-                if (items[i].delete >= 1)
+                if (items[i].Delete >= 1)
                 {
                     items.RemoveAt(i);
                 }

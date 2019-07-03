@@ -5,23 +5,26 @@ namespace FinkiGAME
     public class Box
     {
         public Point Location { get; set; }
-        public Image slika;
 
         public Box()
         {
-            Location = new Point(500, 450);
+            Location = new Point(300, 450);
         }
 
         public void Draw(Graphics g)
         {
-            Brush b = new SolidBrush(Color.Blue);
+            Brush b = new SolidBrush(Color.Transparent);
             g.FillRectangle(b, Location.X, Location.Y, 122, 70);
             b.Dispose();
         }
 
         public void Move(int x)
         {
-            Location = new Point(x, Location.Y);
+            //Left separator >= 100 right <=580
+            if (x >= 110 && x <= 580)
+            {
+                Location = new Point(x, Location.Y);
+            }
         }
     }
 }
