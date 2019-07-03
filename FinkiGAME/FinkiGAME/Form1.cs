@@ -11,8 +11,9 @@ namespace FinkiGAME
         bool flag;
         public Items Scene { get; set; }
         public Box MyBox { get; set; }
-        Image BeerBox;
-        Image beer;
+
+        readonly Image BeerBox;
+        readonly Image beer;
 
         public Form1()
         {
@@ -39,16 +40,16 @@ namespace FinkiGAME
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             if (n % 10 == 0)
-                Scene.addItem();
-            Scene.move();
+                Scene.AddItem();
+            Scene.Move();
             n++;
-            Scene.isHit(MyBox);
+            Scene.IsHit(MyBox);
             textBox1.Text = Items.points.ToString();
-            textBox2.Text = Scene.misses.ToString();
-            if (Scene.misses == 3)
+            textBox2.Text = Scene.Misses.ToString();
+            if (Scene.Misses == 3)
                 timer1.Stop();
             Invalidate();
         }
@@ -56,8 +57,8 @@ namespace FinkiGAME
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.Clear(Color.White);
-            Scene.draw(e.Graphics);
-            MyBox.draw(e.Graphics);
+            Scene.Draw(e.Graphics);
+            MyBox.Draw(e.Graphics);
 
             for (int i = 0; i < Scene.items.Count; i++)
             {
@@ -66,7 +67,7 @@ namespace FinkiGAME
             e.Graphics.DrawImageUnscaled(BeerBox, MyBox.Location);
 
             Brush b = new SolidBrush(Color.Red);
-            if (Scene.misses == 3)
+            if (Scene.Misses == 3)
             {
                 //e.Graphics.DrawString("GAME OVER!", new Font("Arial", 18, FontStyle.Bold), b, 300, 222);
                 if (flag)
@@ -75,7 +76,6 @@ namespace FinkiGAME
                     NewGameForm();
                 }
             }
-
         }
         public void NewGameForm()
         {
@@ -92,7 +92,7 @@ namespace FinkiGAME
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
-            MyBox.move(e.X);
+            MyBox.Move(e.X);
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)

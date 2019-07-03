@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace FinkiGAME
 {
@@ -17,15 +12,16 @@ namespace FinkiGAME
             Location = new Point(500, 450);
         }
 
-        public void draw(Graphics g) {
+        public void Draw(Graphics g)
+        {
             Brush b = new SolidBrush(Color.Blue);
-            g.FillRectangle(b,Location.X, Location.Y, 122, 70);
+            g.FillRectangle(b, Location.X, Location.Y, 122, 70);
             b.Dispose();
         }
 
-        public void move(int x) {
-            Location = new Point(x,Location.Y);
+        public void Move(int x)
+        {
+            Location = new Point(x, Location.Y);
         }
-    
     }
 }
