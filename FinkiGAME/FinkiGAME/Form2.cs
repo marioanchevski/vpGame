@@ -8,8 +8,12 @@ namespace FinkiGAME
         public Form2()
         {
             InitializeComponent();
-            labelScore.Text = "Your score is: " + Items.points;
         }
+        public void showPoints(int pointS)
+        {
+            labelScore.Text = "Your score is: " + pointS;
+        }
+        public int Points { get; internal set; }
 
         private void Button1_Click(object sender, EventArgs e)
         {
@@ -19,9 +23,15 @@ namespace FinkiGAME
         private void Button2_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.No;
+            Cursor.Hide();
         }
 
         private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label2_Click(object sender, EventArgs e)
         {
 
         }

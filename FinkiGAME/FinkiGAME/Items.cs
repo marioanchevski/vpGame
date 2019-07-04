@@ -6,28 +6,20 @@ namespace FinkiGAME
 {
     public class Items
     {
-        public List<Beer> items { get; set; }
+        public List<Beer> ItemsList { get; set; } = new List<Beer>();
         public static int points;
         public int Speed { get; set; }
         public int Misses { get; set; }
         private static readonly Random random = new Random();
 
-        public Items()
-        {
-            items = new List<Beer>();
-            points = 0;
-            Speed = 10;
-            Misses = 0;
-        }
-
         public void AddItem()
         {
-            items.Add(new Beer(new Point(random.Next(111, 610), -50)));
+            ItemsList.Add(new Beer(new Point(random.Next(111, 610), -50)));
         }
 
         public void Draw(Graphics g)
         {
-            foreach (var i in items)
+            foreach (var i in ItemsList)
             {
                 i.Draw(g);
             }
@@ -36,7 +28,7 @@ namespace FinkiGAME
 
         public void Move()
         {
-            foreach (var i in items)
+            foreach (var i in ItemsList)
             {
                 i.Move(Speed);
             }
@@ -44,7 +36,7 @@ namespace FinkiGAME
 
         public void IsHit(Box b)
         {
-            foreach (var i in items)
+            foreach (var i in ItemsList)
             {
                 if (i.IsHit(b))
                 {
@@ -52,7 +44,7 @@ namespace FinkiGAME
                     points++;
                 }
             }
-            foreach (var i in items)
+            foreach (var i in ItemsList)
             {
                 if (i.IsFallen())
                 {
@@ -61,11 +53,11 @@ namespace FinkiGAME
                 }
             }
 
-            for (int i = items.Count - 1; i >= 0; i--)
+            for (int i = ItemsList.Count - 1; i >= 0; i--)
             {
-                if (items[i].Delete >= 1)
+                if (ItemsList[i].Delete >= 1)
                 {
-                    items.RemoveAt(i);
+                    ItemsList.RemoveAt(i);
                 }
             }
         }

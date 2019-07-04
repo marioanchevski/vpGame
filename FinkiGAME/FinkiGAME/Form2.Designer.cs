@@ -67,7 +67,7 @@
             // labelScore
             // 
             this.labelScore.AutoSize = true;
-            this.labelScore.Location = new System.Drawing.Point(110, 60);
+            this.labelScore.Location = new System.Drawing.Point(90, 53);
             this.labelScore.Name = "labelScore";
             this.labelScore.Size = new System.Drawing.Size(0, 17);
             this.labelScore.TabIndex = 3;

@@ -6,7 +6,7 @@ namespace FinkiGAME
     {
         public Point Location { get; set; }
         public int Delete { get; set; }
-        public static int SPEED = 10;
+        public static int SPEED;
 
         public Beer(Point p)
         {
@@ -18,7 +18,7 @@ namespace FinkiGAME
         public void Draw(Graphics g)
         {
             Brush b = new SolidBrush(Color.Black);
-            g.FillRectangle(b, Location.X, Location.Y, 15, 50);
+            g.FillRectangle(b, Location.X, Location.Y, 30, 60);
             b.Dispose();
         }
 
@@ -29,12 +29,10 @@ namespace FinkiGAME
 
         public bool IsHit(Box b)
         {
-            return Location.X >= b.Location.X - 10 && Location.X <= b.Location.X + 122 && Location.Y >= b.Location.Y - 40 && Location.Y <= b.Location.Y + 30;
+            return Location.X >= b.Location.X - 20 && Location.X <= b.Location.X + 85 && Location.Y >= b.Location.Y - 50 && Location.Y <= b.Location.Y + 50;
         }
         public bool IsFallen()
         {
-            //720 form width
-            //570 form height
             return Location.Y >= 520;
         }
     }
