@@ -14,6 +14,7 @@ namespace FinkiGAME
 
         readonly Image BeerBox;
         readonly Image beer;
+        readonly Form2 form2Obj = new Form2();
 
         public Form1()
         {
@@ -79,8 +80,7 @@ namespace FinkiGAME
         }
         public void NewGameForm()
         {
-            Form2 obj = new Form2();
-            if (obj.ShowDialog() == DialogResult.Yes)
+            if (form2Obj.ShowDialog() == DialogResult.Yes)
             {
                 NewGame();
             }
@@ -95,9 +95,28 @@ namespace FinkiGAME
             MyBox.Move(e.X);
         }
 
-        private void TextBox1_TextChanged(object sender, EventArgs e)
+        private void Form1_MouseEnter(object sender, EventArgs e)
         {
+            // Hide the cursor when the mouse pointer enters the form.
+            Cursor.Hide();
+        }
 
+        private void Form1_MouseLeave(object sender, EventArgs e)
+        {
+            // Show the cursor when the mouse pointer leaves the form.
+            Cursor.Show();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            DialogResult result = MessageBox.Show("Are you sure you want to Quit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+                Application.Exit();
+            else
+            {
+                timer1.Start();
+            }
         }
     }
 }

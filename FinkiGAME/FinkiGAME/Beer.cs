@@ -6,7 +6,7 @@ namespace FinkiGAME
     {
         public Point Location { get; set; }
         public int Delete { get; set; }
-        public static int SPEED = 23;
+        public static int SPEED = 10;
 
         public Beer(Point p)
         {
