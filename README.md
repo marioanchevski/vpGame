@@ -53,3 +53,5 @@
             return Location.X >= b.Location.X - 20 && Location.X <= b.Location.X + 85 && Location.Y >= b.Location.Y - 50 && Location.Y <= b.Location.Y + 50;
        	   }
 	```
+
+Забелешка: Слика 3 се појавува доколку играчот ја заврши играта (освои 50 поени).
