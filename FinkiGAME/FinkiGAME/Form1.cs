@@ -53,8 +53,16 @@ namespace FinkiGAME
             if (Items.points % 10 == 0 && Items.points != 0 && countPoints != Items.points)
             {
                 timer1.Stop();
-                remainingTimeForBeers-=3;
-                Beer.SPEED = (int)(Beer.SPEED * 1.6);
+                remainingTimeForBeers -= 3;
+                if (Items.points > 40)
+                {
+                    Beer.SPEED = (int)(Beer.SPEED * 1.3);
+                }
+                else
+                {
+                    Beer.SPEED = (int)(Beer.SPEED * 1.5);
+                }
+
                 Cursor.Show();
                 panelBackground();
                 Thread.Sleep(3000);
@@ -67,11 +75,25 @@ namespace FinkiGAME
             Scene.IsHit(MyBox);
             textBox1.Text = Items.points.ToString();
             textBox2.Text = Scene.Misses.ToString();
+
             if (Scene.Misses == 3)
                 timer1.Stop();
             form2Obj.showPoints(Items.points);
+
+            if (Items.points == 50)
+            {
+                endGame();
+
+            }
             Invalidate();
         }
+
+        private void endGame()
+        {
+            timer1.Stop();
+            Cursor.Show();
+        }
+
         public void panelBackground()
         {
             if (Items.points == 10)
@@ -88,9 +110,9 @@ namespace FinkiGAME
             }
             else if (Items.points == 30)
             {
-                label1.BackColor = ColorTranslator.FromHtml("#CDE9D8");
-                label2.BackColor = ColorTranslator.FromHtml("#CDE9D8");
-                panel1.BackgroundImage = Resources.Lvl1;
+                label1.BackColor = ColorTranslator.FromHtml("#fbcdbe");
+                label2.BackColor = ColorTranslator.FromHtml("#fbcdbe");
+                panel1.BackgroundImage = Resources.Lvl4;
             }
             else
             {
@@ -99,14 +121,14 @@ namespace FinkiGAME
                 panel1.BackgroundImage = Resources.Lvl5;
             }
         }
-            
+
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.Clear(Color.White);
             Scene.Draw(e.Graphics);
             MyBox.Draw(e.Graphics);
             e.Graphics.DrawImageUnscaled(backgroundPicture, 108, 0);
-           
+
 
             for (int i = 0; i < Scene.ItemsList.Count; i++)
             {
@@ -117,7 +139,7 @@ namespace FinkiGAME
             Brush b = new SolidBrush(Color.Red);
             if (Scene.Misses == 3)
             {
-               
+
                 if (flag)
                 {
                     flag = false;
@@ -131,7 +153,7 @@ namespace FinkiGAME
             if (form2Obj.ShowDialog() == DialogResult.Yes)
             {
                 NewGame();
-            
+
             }
             else
             {
