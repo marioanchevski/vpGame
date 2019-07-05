@@ -36,6 +36,7 @@
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("Curlz MT", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(21, 104);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 51);
@@ -46,6 +47,7 @@
             // 
             // button2
             // 
+            this.button2.Font = new System.Drawing.Font("Curlz MT", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(187, 104);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(121, 51);
@@ -57,19 +59,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(89, 9);
+            this.label1.Font = new System.Drawing.Font("Curlz MT", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(69, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 24);
+            this.label1.Size = new System.Drawing.Size(192, 37);
             this.label1.TabIndex = 2;
             this.label1.Text = "GAME OVER !!!";
             // 
             // labelScore
             // 
             this.labelScore.AutoSize = true;
+            this.labelScore.Font = new System.Drawing.Font("Curlz MT", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelScore.Location = new System.Drawing.Point(90, 53);
             this.labelScore.Name = "labelScore";
-            this.labelScore.Size = new System.Drawing.Size(0, 17);
+            this.labelScore.Size = new System.Drawing.Size(0, 32);
             this.labelScore.TabIndex = 3;
             // 
             // Form2
@@ -82,7 +85,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Form2";
-            this.Text = "Form2";
             this.ResumeLayout(false);
             this.PerformLayout();
 
