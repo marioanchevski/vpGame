@@ -63,7 +63,6 @@ namespace FinkiGAME
                 }
 
                 panelBackground();
-                Thread.Sleep(3000);
                 countPoints = Items.points;
                 timer1.Start();
             }
