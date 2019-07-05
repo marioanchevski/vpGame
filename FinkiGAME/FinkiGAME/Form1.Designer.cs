@@ -127,6 +127,8 @@
             this.Name = "Form1";
             this.Text = "Скопско";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+            this.MouseEnter += new System.EventHandler(this.Form1_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.Form1_MouseLeave);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

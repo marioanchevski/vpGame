@@ -25,7 +25,6 @@ namespace FinkiGAME
             }
         }
 
-
         public void Move()
         {
             foreach (var i in ItemsList)
@@ -56,9 +55,7 @@ namespace FinkiGAME
             for (int i = ItemsList.Count - 1; i >= 0; i--)
             {
                 if (ItemsList[i].Delete >= 1)
-                {
                     ItemsList.RemoveAt(i);
-                }
             }
         }
     }

@@ -83,6 +83,16 @@ namespace FinkiGAME.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DrunkFinish {
+            get {
+                object obj = ResourceManager.GetObject("DrunkFinish", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Lvl1 {
             get {
                 object obj = ResourceManager.GetObject("Lvl1", resourceCulture);

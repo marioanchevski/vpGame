@@ -111,25 +111,10 @@
     <None Include="Resources\wood_background_final.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\test.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Final.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\test2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Lvl1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Lvl1Final.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Lvl2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\new.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Lvl3.png" />
@@ -139,6 +124,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Lvl4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DrunkFinish.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

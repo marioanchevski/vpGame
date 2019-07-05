@@ -17,7 +17,7 @@ namespace FinkiGAME
         readonly Image beer;
         readonly Image backgroundPicture;
         readonly Form2 form2Obj = new Form2();
-
+        readonly Form3 form3Obj = new Form3();
         public Form1()
         {
             InitializeComponent();
@@ -31,7 +31,6 @@ namespace FinkiGAME
             panel1.BackgroundImage = Resources.Lvl1;
             label1.BackColor = ColorTranslator.FromHtml("#CDE9D8");
             label2.BackColor = ColorTranslator.FromHtml("#CDE9D8");
-            Cursor.Hide();
             flag = true;
             remainingTimeForBeers = 18;
             Items.points = 0;
@@ -54,19 +53,17 @@ namespace FinkiGAME
             {
                 timer1.Stop();
                 remainingTimeForBeers -= 3;
-                if (Items.points > 40)
+                if (Items.points >= 40)
                 {
-                    Beer.SPEED = (int)(Beer.SPEED * 1.3);
+                    Beer.SPEED = (int)(Beer.SPEED * 1.4);
                 }
                 else
                 {
                     Beer.SPEED = (int)(Beer.SPEED * 1.5);
                 }
 
-                Cursor.Show();
                 panelBackground();
                 Thread.Sleep(3000);
-                Cursor.Hide();
                 countPoints = Items.points;
                 timer1.Start();
             }
@@ -78,22 +75,10 @@ namespace FinkiGAME
 
             if (Scene.Misses == 3)
                 timer1.Stop();
-            form2Obj.showPoints(Items.points);
+            form2Obj.ShowPoints(Items.points);
 
-            if (Items.points == 50)
-            {
-                endGame();
-
-            }
             Invalidate();
         }
-
-        private void endGame()
-        {
-            timer1.Stop();
-            Cursor.Show();
-        }
-
         public void panelBackground()
         {
             if (Items.points == 10)
@@ -139,17 +124,27 @@ namespace FinkiGAME
             Brush b = new SolidBrush(Color.Red);
             if (Scene.Misses == 3)
             {
-
                 if (flag)
                 {
                     flag = false;
                     NewGameForm();
                 }
             }
+
+            if (Items.points == 50)
+            {
+                if (form3Obj.ShowDialog() == DialogResult.Yes)
+                {
+                    NewGame();
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
         }
         public void NewGameForm()
         {
-            Cursor.Show();
             if (form2Obj.ShowDialog() == DialogResult.Yes)
             {
                 NewGame();
@@ -165,51 +160,63 @@ namespace FinkiGAME
         {
             MyBox.Move(e.X);
         }
-
         private void Button1_Click(object sender, EventArgs e)
         {
             timer1.Stop();
-            Cursor.Show();
             DialogResult result = MessageBox.Show("Are you sure you want to Quit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
                 Application.Exit();
             else
-            {
                 timer1.Start();
-                Cursor.Hide();
-            }
         }
         public static int ScorePoints()
         {
             Form1 obj = new Form1();
             if (int.TryParse(obj.textBox1.Text, out var points))
-            {
                 return points;
-            }
             else
-            {
                 return 0;
-            }
         }
 
         private void Panel1_MouseEnter(object sender, EventArgs e)
         {
-            Cursor.Show();
+            timer1.Stop();
         }
 
         private void Panel1_MouseLeave(object sender, EventArgs e)
         {
-            Cursor.Hide();
+            if (enterForm)
+            {
+                timer1.Start();
+            }
         }
 
         private void ButtonQuit_MouseEnter(object sender, EventArgs e)
         {
             buttonQuit.BackColor = Color.Red;
+            timer1.Stop();
         }
 
         private void ButtonQuit_MouseLeave(object sender, EventArgs e)
         {
             buttonQuit.BackColor = Color.Transparent;
+            if (enterForm)
+            {
+                timer1.Start();
+            }
         }
+        bool enterForm;
+        private void Form1_MouseEnter(object sender, EventArgs e)
+        {
+            enterForm = true;
+            timer1.Start();
+        }
+
+        private void Form1_MouseLeave(object sender, EventArgs e)
+        {
+            enterForm = false;
+            timer1.Stop();
+        }
+
     }
 }
